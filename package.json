@@ -1,0 +1,25 @@
+{
+    "name": "cqlLanguage",
+    "displayName": "cql-language",
+    "description": "Categorical Query Language support",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.36.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "cql",
+            "aliases": ["Categorical Query Language", "cql"],
+            "extensions": [".cql",".aql"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "cql",
+            "scopeName": "source.cql",
+            "path": "./syntaxes/cql.tmLanguage.json"
+        }]
+    }
+}

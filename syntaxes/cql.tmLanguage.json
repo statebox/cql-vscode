@@ -1,0 +1,57 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Categorical Query Language",
+	"scopeName": "source.cql",
+	"patterns": [
+		{ "include": "#comments" },
+		{ "include": "#keywords" },
+		{ "include": "#strings"	}
+	],
+	"repository": {
+
+		"comments": {
+			"patterns": [{
+				"name": "comment.line.cql",
+				"match":  "(\/\/).*$\n?",
+				"captures": {
+					"1": {
+						"name": "punctuation.definition.comment.cql"
+					}
+				}
+			}]
+		},
+		
+
+		"keywords": {
+			"patterns": [
+				{
+					"name": "constant.numeric.cql",
+					"match": "\\b(empty|unit)\\b"
+				},
+				{
+					"name": "entity.name.type.cql",
+					"match": "\\b(options|typeside|schema|instance|mapping|transform|constraints|query|graph)\\b"
+				},
+				{
+					"name": "entity.name.function.cql",
+					"match": "\\b(nodes|edges|entity|entities|foreign_keys|attributes|generators|equations|multi_equations|path_equations|observation_equations|functions|constants|types)\\b"
+				},
+				{
+				"name": "keyword.control.cql",
+				"match": "\\b(identity|literal|sql|schemaOf|typesideOf|toQuery|fromQuery|simple|chase|anonymize|frozen|counit_query|counit|emptyunion|coproduct|coproduct_sigma|distinct|eval|coeval|coequalize|src|dst|check|assert_consistent|pragma|command|exec_jdbc|exec_js|exec_cmdline|import_csv|import_jdbc|export_jdbc_instance|html|md|from|where|exists|imports|java_types|java_constants|java_functions|forall|delta|lambda|pi|sigma)\\b"
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.double.cql",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.cql",
+					"match": "\\\\."
+				}
+			]
+		}
+	}
+}
