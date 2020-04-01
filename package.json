@@ -1,25 +1,106 @@
 {
-    "name": "cqlLanguage",
-    "displayName": "cql-language",
-    "description": "Categorical Query Language support",
-    "version": "0.0.1",
-    "engines": {
-        "vscode": "^1.36.0"
-    },
-    "categories": [
-        "Programming Languages"
-    ],
-    "contributes": {
-        "languages": [{
-            "id": "cql",
-            "aliases": ["Categorical Query Language", "cql"],
-            "extensions": [".cql",".aql"],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "cql",
-            "scopeName": "source.cql",
-            "path": "./syntaxes/cql.tmLanguage.json"
-        }]
-    }
+	"name": "cql-ide",
+	"description": "An IDE for working with CQL",
+	"author": "Aidan McPhelim",
+	"license": "MIT",
+	"version": "1.0.0",
+	"publisher": "Statebox",
+	"categories": [],
+	"keywords": [
+		"multi-root ready"
+	],
+	"engines": {
+		"vscode": "^1.39.0"
+	},
+	"activationEvents": [
+		"onLanguage:cql",
+		"onCommand:schemaView.start"
+	],
+	"main": "./client/out/extension",
+	"contributes": {
+		"configuration": {
+			"type": "object",
+			"title": "Example configuration",
+			"properties": {
+				"languageServerExample.maxNumberOfProblems": {
+					"scope": "resource",
+					"type": "number",
+					"default": 100,
+					"description": "Controls the maximum number of problems produced by the server."
+				},
+				"languageServerExample.trace.server": {
+					"scope": "window",
+					"type": "string",
+					"enum": [
+						"off",
+						"messages",
+						"verbose"
+					],
+					"default": "off",
+					"description": "Traces the communication between VS Code and the language server."
+				}
+			}
+		},
+		"commands": [
+			{
+				"command": "schemaView.start",
+				"title": "Create schema view",
+				"category": "CQL Visualisation"
+			},
+			{
+				"command": "typesideView.start",
+				"title": "Create typeside view",
+				"category": "CQL Visualisation"
+			}
+		],
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "cqlView",
+					"title": "CQL View",
+					"icon": "media/icon.svg"
+				}
+			]
+		},
+		"views": {
+			"cqlView": [
+				{
+					"id": "treeView",
+					"name": "Tree View"
+				}
+			]
+		},
+		"languages": [{
+			"id": "cql",
+			"aliases": ["Categorical Query Language", "cql"],
+			"extensions": [".cql",".aql"],
+			"configuration": "./language-configuration.json"
+		}],
+		"grammars": [{
+			"language": "cql",
+			"scopeName": "source.cql",
+			"path": "./syntaxes/cql.tmLanguage.json"
+		}]
+	},
+	"scripts": {
+		"vscode:prepublish": "cd client && npm run update-vscode && cd .. && npm run compile",
+		"compile": "tsc -b",
+		"watch": "tsc -b -w",
+		"postinstall": "cd client && npm install && cd ../server && npm install && cd ..",
+		"test": "node ./client/out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/chai": "^4.2.11",
+		"@types/mocha": "^5.2.7",
+		"@types/node": "^12.11.7",
+		"chai": "^4.2.0",
+		"mocha": "^7.1.0",
+		"ts-node": "^8.6.2",
+		"tslint": "^5.16.0",
+		"typescript": "^3.8.3",
+		"vscode": "^1.1.35"
+	},
+	"extensionDependencies": [
+		"statebox.cqllanguage"
+	]
 }

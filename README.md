@@ -1,6 +1,20 @@
-# vscode CQL language support
+# CQL IDE
 
-## Usage
+Heavily documented sample code for <https://code.visualstudio.com/api/language-extensions/language-server-extension-guide>
 
-- To start using your extension with Visual Studio Code copy it into the `<user home>/.vscode/extensions` folder and restart Code.
-- Open a `.cql` file and marvel at all the pretty colours.
+## Functionality
+
+This extension works for CQL files. It has the following features;
+
+- Tree view of the file available along the left of the window.
+- Visualisations of the Typesides contained within the file.
+- Visualisations of the Schema contained within the file.
+
+## Running the Sample
+
+- Make sure you have CQL installed on your machine.
+- Make sure you have the CQL language installed as an extension in VSCode.
+- Open/Create a CQL file
+- Click the circle symbol along the left to view the tree view.
+- Navigate to the command palette, available in the "View" tab of the window.
+- Type in "CQL Visualisation: Create typeside view" or "CQL Visualisation: Create schema view"
